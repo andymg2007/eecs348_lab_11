@@ -1,0 +1,23 @@
+Q1: 
+Yes there is a fault in the loop of the fail_lecture function. The loop sets i = 1 in the line, for (int i = 1; ...) and checks it with the
+attendence_records list at the index i. But the list starts at index 0 and the loop will never reach that value. To fix the issue you 
+need to set i = 0 at the beginning of the list.
+
+Q2:
+It is impossible to avoid that fault because there is no set of values that will allow the loop to check the 
+first element in the list. Every time the program runs the fault is executed because it runs everytime the loop runs.
+
+Q3:
+impossible because an error state will occur no matter what when the loop is executed because i is incorrect
+always inside the loop. The error state is defined as an incorrect internal state and the loop being off of the list
+and never reaching the first element is an incorrect internal state to me.
+
+Q4:
+To get an error state with no failure the first number in the list can be a 0 and the other 9 a 1. This will return
+an absent_count of 0 when it should be a count of 1 because the first element is never reached in the loop. However the program
+is not a failure with this test case because it checks if the absent count is >= 3 which both 1 and 0 pass this test so it is neglegent
+
+Q5:
+For the failure you need a list with an absence in the first index and then two more at another point. This will give a total of 3 
+absences but will return false when asked if the absent_count >= 3 when it should be true. This is because the loop never counts
+the first absence causing a failed state.
