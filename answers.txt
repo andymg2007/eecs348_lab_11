@@ -15,9 +15,18 @@ and never reaching the first element is an incorrect internal state to me.
 Q4:
 To get an error state with no failure the first number in the list can be a 0 and the other 9 a 1. This will return
 an absent_count of 0 when it should be a count of 1 because the first element is never reached in the loop. However the program
-is not a failure with this test case because it checks if the absent count is >= 3 which both 1 and 0 pass this test so it is neglegent
+is not a failure with this test case because it checks if the absent count is >= 3 which both 0 and 1 are less than 3 so absent_count 
+will return false either way.
+
+test case: {0,1,1,1,1,1,1,1,1,1}
+expected absent_count: 1
+actual absent_count: 0
 
 Q5:
 For the failure you need a list with an absence in the first index and then two more at another point. This will give a total of 3 
 absences but will return false when asked if the absent_count >= 3 when it should be true. This is because the loop never counts
 the first absence causing a failed state.
+
+test case: {0,0,0,0,1,1,1,1,1,1}
+expected absent_count: 3
+actual absent_count: 2
